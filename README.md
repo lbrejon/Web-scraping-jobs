@@ -55,7 +55,7 @@ Librairies:
 ## Description 📋 
 This project aims to **find best job offers for you by web scrapping**. As a reminder, **web scraping is the process of gathering information from the Internet, most of the time automatically**. Just to make sure you understand the the scope of this process, scraping a page respectfully for educational purposes is not a problem since the information is publically available.
 
-- I choosen to use **BeautifulSoup** librairy because it's an easy one for beginners (for other librairies, see Selenium, lxml, Scrapy..). BeautifulSoup is a Python library for parsing structured data (```soup = BeautifulSoup(page.content, "html.parser"```). It allows you to interact with HTML in a similar way to how you interact with a web page using developer tools. Indeed, an HTML web page is structured by **tags** making elements search simple: 
+- I choosen to use **BeautifulSoup** librairy because it's an easy one for beginners (for other librairies, see Selenium, lxml, Scrapy..). BeautifulSoup is a Python library for parsing structured data (```soup = BeautifulSoup(page.content, "html.parser")```). It allows you to interact with HTML in a similar way to how you interact with a web page using developer tools. Indeed, an HTML web page is structured by **tags** making elements search simple: 
     - find elements by class name: ```element1 = soup.find_all("<tag>", class_="<class>")```
     - find elements by id: ```element2 = soup.find_all("<tag>", id_="<id>")```
     - find elements by text content: ```element3 = soup.find_all("<tag>", string="<string>")```
