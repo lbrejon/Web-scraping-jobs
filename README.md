@@ -13,6 +13,7 @@ Implementation of jobs recommendation algorithm by web scrapping
 Estimated reading time : ⏱️ 5min
 
 ## My goals 🎯
+- Find an internship for my final year as student (equivalent to Master degree) in Data Science in Europe (5-6 months from February 2022)
 - Learn how to gather information (by web scraping) to build a dataset 
 - Build and deploy a web app with Flask
 
@@ -61,7 +62,7 @@ This project aims to **find best job offers for you by web scrapping**. As a rem
     - find elements by text content: ```element3 = soup.find_all("<tag>", string="<string>")```
 
 - **Scrapping** and **parsing data process** enables to gather information about job offers: 'Title', 'Company', 'Company_type', 'Company_sector', 'Country', 'City', 'Summary, 'Date', 'Job_id' and 'Job_url'. The job recommendation algorithm can process **several websites**, **countries**, **cities** and **pages**.\
-For *LinkedIn* website, the parameter geoId was required to scrap data. Information about geoId came from *https://help4access.com/no-more-secrets/* and raw data was saved into ```data/raw/geoId.csv```, then cleaned and saved data in ```data/processed/geoId.csv```.
+For *LinkedIn* website, the parameter geoId was required to scrap data. Information about geoId came from this *[website](https://help4access.com/no-more-secrets/)* and raw data was saved into ```data/raw/geoId.csv```, then cleaned and saved data in ```data/processed/geoId.csv```.
 
 - The **jobs recommendation algorithm** takes in argument a dictionary with information about the user request: **jobs_parameters**.
 ``` bash
@@ -89,8 +90,7 @@ jobs_parameters = {
 ```      
 
 
-- It is possible that **LinkedIn blocked your access while scrapping the website**. You'll get the error mentioned below. Indeed you can only access a LinkedIn profile if you are logged in and when LinkedIn receives a request, it looks for a specific cookie called **li_at** in the request. If it does not find this cookie, it redirects the requester to a page with the JavaScript you had. This JavaScript serves to redirect you to the login page. That's what all the ```window.location.href=<thing>``` is about. You juste have to add the li_at cookie value: ```request = requests.get('https://www.linkedin.com/in/<your_profile>/', headers={'cookie': 'li_at=<cookie_li_at_value>'})```.\
-You "**fake**" a logged-in request by going to LinkedIn, copying your own li_at cookie, and adding that to your request. Note that this will only work temporarily: at some point LinkedIn will expect that cookie to change, and **you will have to re-copy it**.
+- It is possible that **LinkedIn blocked your access while scrapping the website**. You'll get the error mentioned below. Indeed you can only access a LinkedIn profile if you are logged in and when LinkedIn receives a request, it looks for a specific cookie called **li_at** in the request. If it does not find this cookie, it redirects the requester to a page with the JavaScript you had. This JavaScript serves to redirect you to the login page. That's what all the ```window.location.href=<thing>``` is about. You juste have to add the li_at cookie value: ```request = requests.get('https://www.linkedin.com/in/<your_profile>/', headers={'cookie': 'li_at=<cookie_li_at_value>'})```. You "**fake**" a logged-in request by going to LinkedIn, copying your own li_at cookie, and adding that to your request. Note that this will only work temporarily: at some point LinkedIn will expect that cookie to change, and **you will have to re-copy it**.
 ``` bash
 <html><head>
 <script type="text/javascript">
@@ -142,3 +142,5 @@ IN PROGRESS
 ```
 
 ## Sources ⚙️
+- Inspired by the work of *John Watson Rooney* with his [YouTube video](How to Web Scrape Indeed with Python - Extract Job Information to CSV).
+- Thanks to *RobertAKARobin* for his solution to solve LinkedIn access blocking on [Stack Overflow](https://stackoverflow.com/questions/53749379/download-a-linkedin-page).
