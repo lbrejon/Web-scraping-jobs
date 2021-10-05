@@ -142,5 +142,5 @@ IN PROGRESS
 ```
 
 ## Sources ⚙️
-- Inspired by the work of *John Watson Rooney* with his [YouTube video](How to Web Scrape Indeed with Python - Extract Job Information to CSV).
+- Inspired by the work of *John Watson Rooney* with his YouTube video [How to Web Scrape Indeed with Python - Extract Job Information to CSV](https://www.youtube.com/watch?v=PPcgtx0sI2E&t=146s).
 - Thanks to *RobertAKARobin* for his solution to solve LinkedIn access blocking on [Stack Overflow](https://stackoverflow.com/questions/53749379/download-a-linkedin-page).
