@@ -19,7 +19,8 @@ Estimated reading time : ⏱️ 5min
 
 ## Acquired skills :zap:
 - Web scrapping methods
-- Manipulation of Jinja templates
+- HTTP methods ('GET' and 'POST') for the Flask implementation
+- Concepts of Jinja templates
 
 ## Technologies 🖥️
 Programming languages:
@@ -34,11 +35,24 @@ Librairies:
 - bs4 (BeautifulSoup)
 ```
 
-
 ## Project composition 📂
 ```bash
 .
 ├── README.md
+│
+├── app
+│   ├── venv
+│   │
+│   ├── static
+│   │   └── css
+│   │       └── main.css
+│   │   
+│   ├── templates
+│   │   └── base.html
+│   │
+│   ├── app.py
+│   │
+│   └── db.sqlite
 │
 ├── data
 │   ├── raw
