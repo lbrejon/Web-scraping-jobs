@@ -1,5 +1,11 @@
-# Jobs-scrapping
-Implementation of jobs recommendation algorithm by web scrapping
+# Jobs-scraping
+Implementation of jobs recommendation algorithm by web scraping
+
+<p align="center">
+  <kbd>
+  <img width=1000 src="https://user-images.githubusercontent.com/56866008/136670072-d721627d-0176-4562-932a-bdbba618edb3.png"><br>
+  </kbd>
+</p>
 
 ## Table of contents 📝
 * [My goals](#my-goals)
@@ -18,9 +24,10 @@ Estimated reading time : ⏱️ 5min
 - Build and deploy a web app with Flask
 
 ## Acquired skills :zap:
-- Web scrapping methods
+- Web scraping methods
 - HTTP methods ('GET' and 'POST') for the Flask implementation
 - Concepts of Jinja templates
+- Handle with SQLAlchemy
 
 ## Technologies 🖥️
 Programming languages:
