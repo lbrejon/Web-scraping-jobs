@@ -1,4 +1,4 @@
-# Jobs-scraping
+# Web-scraping-jobs
 Implementation of jobs recommendation algorithm by web scraping
 
 <p align="center">
