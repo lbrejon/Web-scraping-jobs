@@ -39,7 +39,10 @@ Librairies:
 ```bash
 - pandas
 - requests
+- geopy
 - bs4 (BeautifulSoup)
+- flask
+- sqlalchemy
 ```
 
 ## Project composition 📂
@@ -51,15 +54,21 @@ Librairies:
 │   ├── venv
 │   │
 │   ├── static
-│   │   └── css
-│   │       └── main.css
+│   │   ├── css
+│   │   │   └── main.css
+│   │   │ 
+│   │   ├── img  
+│   │   │   └── logo.svg
+│   │   │
+│   │   └── phocacssflagswidthphoca-flags.css
+│   │       ├── phoca-flags.css
+│   │       │
+│   │       └── style.css
 │   │   
 │   ├── templates
 │   │   └── base.html
 │   │
-│   ├── app.py
-│   │
-│   └── db.sqlite
+│   └── app.py
 │
 ├── data
 │   ├── raw
@@ -68,10 +77,16 @@ Librairies:
 │   ├── processed
 │   │   └── geoId.csv
 │   │
-│   └── jobs.csv
+│   ├── jobs.csv
+│   │
+│   ├── jobs.json
+│   │
+│   └── jobs_parameters_user_request.json
 │
 └── notebooks
-    └── scrapping_jobs.ipynb
+    ├── scraping_jobs.ipynb
+    │
+    └── scraping_jobs.py
 ```
 
 ## Description 📋 
