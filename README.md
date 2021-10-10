@@ -13,6 +13,7 @@ Implementation of jobs recommendation algorithm by web scraping
 * [Technologies](#technologies)
 * [Project composition](#project-composition)
 * [Description](#description)
+* [Help](#help)
 * [Launch the program](#launch-the-program)
 * [Sources](#sources)
 
@@ -52,7 +53,6 @@ Librairies:
 ├── README.md
 │
 ├── app
-│   ├── venv
 │   │
 │   ├── static
 │   │   ├── css
@@ -69,7 +69,9 @@ Librairies:
 │   ├── templates
 │   │   └── base.html
 │   │
-│   └── app.py
+│   ├── app.py
+│   │
+│   └── requirements.txt
 │
 ├── data
 │   ├── raw
@@ -101,33 +103,50 @@ This project aims to **find best job offers for you by web scrapping**. As a rem
 - **Scrapping** and **parsing data process** enables to gather information about job offers: 'Title', 'Company', 'Company_type', 'Company_sector', 'Country', 'City', 'Summary, 'Date', 'Job_id' and 'Job_url'. The job recommendation algorithm can process **several websites**, **countries**, **cities** and **pages**.\
 For *LinkedIn* website, the parameter geoId was required to scrap data. Information about geoId came from this *[website](https://help4access.com/no-more-secrets/)* and raw data was saved into ```data/raw/geoId.csv```, then cleaned and saved data in ```data/processed/geoId.csv```.
 
-- The **jobs recommendation algorithm** takes in argument a dictionary with information about the user request: **jobs_parameters**.
-``` bash
-jobs_parameters = {
-    # Job request
-    'website': ['indeed', 'linkedin'],
-    'query': 'Data Scientist',
-    'location': ['Geneva', 'Paris', 'Brussels', 'Amsterdam'],
-    'distance': 10,
-    'description_keywords_ordered': ['Data Science', 'Deep Learning', 'Machine Learning', 'AWS', 'Data', 'Python', 'SQL','Analysis', 'Modelling'],
-    'description_keywords_excluded': ['Headhunter', 'Manager', 'Director', 'Senior'],
-    'title_keywords_must': ['Data'],
-    'title_keywords_excluded': ['Manager', 'Director', 'Senior', 'Head', 'Freelance', 'Engineer', 'Experienced'],
-    'pages': 20,
-    
-    # Preferences
-    'title_keywords_ordered': ['Junior', 'Data Scientist', 'Internship', 'Data Science', 'DataScientist', 'DataScience'],
-    'company_size_type': {'Large Enterprise (+5000 employees)':True,
-                    'Intermediate-sized Enterprise (251-5000 employees)':False,
-                    'Medium-sized Enterprise (51-250 employees)':False,
-                    'Small-sized Enterprise (11-50 employees)':False,
-                    'Startup (1-10 employees)':False
-                    }
-}
-```      
+- The **jobs recommendation algorithm** takes in argument a dictionary with information about the user request: **jobs_parameters**. The fieds **Query** and **City** are mandatory to search jobs. By default:
+    - Website: Indeed
+    - Distance from the city: 0
+    - Required keywords (in title): None
+    - Excluded keywords (in title): None
+    - Preferred keywords (in title): None
+    - Number of pages: 3
+    - Company size type: all company size type are considered (from 'Large' to 'Startup')
 
+<p align="center">
+  <kbd>
+  <img width=1000 src="https://user-images.githubusercontent.com/56866008/136706114-b53fb869-7b16-4a1d-b52b-b90e17ce4d2a.jpg"><br>
+  </kbd>
+</p>
 
-- It is possible that **LinkedIn blocked your access while scrapping the website**. You'll get the error mentioned below. Indeed you can only access a LinkedIn profile if you are logged in and when LinkedIn receives a request, it looks for a specific cookie called **li_at** in the request. If it does not find this cookie, it redirects the requester to a page with the JavaScript you had. This JavaScript serves to redirect you to the login page. That's what all the ```window.location.href=<thing>``` is about. You juste have to add the li_at cookie value: ```request = requests.get('https://www.linkedin.com/in/<your_profile>/', headers={'cookie': 'li_at=<cookie_li_at_value>'})```. You "**fake**" a logged-in request by going to LinkedIn, copying your own li_at cookie, and adding that to your request. Note that this will only work temporarily: at some point LinkedIn will expect that cookie to change, and **you will have to re-copy it**.
+- As regarding the content, several information is displayed to the user:
+    - **ID**: 
+    - **JOB RATING**:
+    - **WEBSITE**: 
+    - **TITLE**: 
+    - **COMPANY**: 
+    - **COMPANY TYPE**: 
+    - **COMPANY SECTOR**: 
+    - **COUNTRY**: 
+    - **CITY**: 
+    - **JOB SUMMARY**: 
+    - **DATE**: 
+    - **JOB URL**: 
+
+- Initially **jobs are ranked by their 'job_rating'** which is computed by preference criteria: **Preferred keywords (in title)** and **Company size type**. If the job offer come from a selected company size type or if the job offer's title contains the word in the preferred keywords, **the job_rating score increases by one as many times as title has preferred keywords**.\
+\
+For example, assuming that a user make a request with ```Preferred keywords (in title): Junior;Data Scientist``` and ```Company size type: Large-sized Entreprise (+5000 employees)```, the job offer below has a **job_rating=3** because the title *Junior Data Scientist / Artificial Intelligence Consultant* contains two preferred keywords and the company *DELOITTE* type is a Large-sized Entreprise.
+
+<p align="center">
+  <kbd>
+  <img width=1000 src="https://user-images.githubusercontent.com/56866008/136706327-86e60f96-3b9f-424a-ba3d-2a71bef756ee.png"><br>
+  </kbd>
+</p>
+
+- You can also rank jobs by others criteria such as **ID**, **Company**, **Company type**, **Company sector**, **Country**, **City** and **Date** by clicking in ranking button (jobs are ranked by alphabetical order [A-Z] and descending number [9-0].
+
+## Help 🔑
+It is possible that **LinkedIn blocked your access while scrapping the website**. You'll get the error mentioned below. Indeed you can only access a LinkedIn profile if you are logged in and when LinkedIn receives a request, it looks for a specific cookie called **li_at** in the request. If it does not find this cookie, it redirects the requester to a page with the JavaScript you had. This JavaScript serves to redirect you to the login page. That's what all the ```window.location.href=<thing>``` is about. You juste have to add the li_at cookie value: ```headers={'cookie': 'li_at=<cookie_li_at_value>'})```. By doing this, you "**fake**" a logged-in request by going to LinkedIn, copying your own li_at cookie, and adding that to your request. Note that this will only work temporarily: at some point LinkedIn will expect that cookie to change, and **you will have to re-copy it**.
+
 ``` bash
 <html><head>
 <script type="text/javascript">
@@ -174,9 +193,30 @@ window.onload = function() {
 ``` 
 
 ## Launch the program ▶️
+Create project with a virtual environment (in 'app' folder)
 ```
-IN PROGRESS
+$ mkdir myproject
+$ cd myproject
+$ python3 -m venv flask
 ```
+Activate it (virtual environment's name is flask)
+```
+$ source flask/bin/activate
+```
+Install requirements
+```
+$ pip install -r requirements.txt
+```
+Set environment variables in terminal (in order to not rerun code after modifications)
+```
+$ export FLASK_APP=app.py
+$ export FLASK_ENV=development
+```
+Run the app
+```
+$ flask run
+```
+
 
 ## Sources ⚙️
 - Inspired by the work of *John Watson Rooney* with his YouTube video [How to Web Scrape Indeed with Python - Extract Job Information to CSV](https://www.youtube.com/watch?v=PPcgtx0sI2E&t=146s) for **web scrapping methods**.
