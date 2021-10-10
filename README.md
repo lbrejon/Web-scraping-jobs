@@ -1,11 +1,7 @@
 # Web-scraping-jobs
 Implementation of jobs recommendation algorithm by web scraping
 
-<p align="center">
-  <kbd>
-  <img width=1000 src="https://user-images.githubusercontent.com/56866008/136670072-d721627d-0176-4562-932a-bdbba618edb3.png"><br>
-  </kbd>
-</p>
+https://user-images.githubusercontent.com/56866008/136713739-fb332ca9-5151-4481-b373-3531a43a8dae.mp4
 
 ## Table of contents 📝
 * [My goals](#my-goals)
