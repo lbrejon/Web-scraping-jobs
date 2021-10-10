@@ -183,5 +183,5 @@ IN PROGRESS
 - Inspired by the work of *Python Engineer* with his YouTube video [Python Flask Beginner Tutorial - Todo App - Crash Course](https://www.youtube.com/watch?v=yKHJsLUENl0) for **Flask app implementation**. 
 - Help with **Flask installation** [here](https://flask.palletsprojects.com/en/2.0.x/installation/).
 - Help with **Jinja2 Templates and Forms** [here](https://www.codecademy.com/learn/learn-flask/modules/flask-templates-and-forms/cheatsheet).
-- Help with Web App deployment on Heroku [here](https://www.heroku.com/).
+- Help with **Web App deployment on Heroku** [here](https://www.heroku.com/).
 - Thanks to *RobertAKARobin* for his solution to **solve LinkedIn access blocking** on [Stack Overflow](https://stackoverflow.com/questions/53749379/download-a-linkedin-page).
