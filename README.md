@@ -115,18 +115,18 @@ For *LinkedIn* website, the parameter geoId was required to scrap data. Informat
 </p>
 
 - As regarding the content, several information is displayed to the user:
-    - **ID**: 
-    - **JOB RATING**:
-    - **WEBSITE**: 
-    - **TITLE**: 
-    - **COMPANY**: 
-    - **COMPANY TYPE**: 
-    - **COMPANY SECTOR**: 
-    - **COUNTRY**: 
-    - **CITY**: 
-    - **JOB SUMMARY**: 
-    - **DATE**: 
-    - **JOB URL**: 
+    - **ID**: Integer, the job id in the table
+    - **JOB RATING**: Integer, job rating computed by keywords (preferred keywords in title) and company-sized type
+    - **WEBSITE**: String, name of websites used
+    - **TITLE**: String, job offer title 
+    - **COMPANY**: String, indicates the name of the company
+    - **COMPANY TYPE**: String, company-sized type (Large, Intermediate, Medium, Small or Startup)
+    - **COMPANY SECTOR**: company sector 
+    - **COUNTRY**: String, company location (country)
+    - **CITY**: String, company location (city)
+    - **JOB SUMMARY**: String, summary of the job offer
+    - **DATE**: String, date of publication of the job offer (from <1 day to 30 days)
+    - **JOB URL**: String, link to the job offer
 
 - Initially **jobs are ranked by their 'job_rating'** which is computed by preference criteria: **Preferred keywords (in title)** and **Company size type**. If the job offer come from a selected company size type or if the job offer's title contains the word in the preferred keywords, **the job_rating score increases by one as many times as title has preferred keywords**.\
 \
