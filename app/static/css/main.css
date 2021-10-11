@@ -1,0 +1,431 @@
+h1 {
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 50px;
+    /* color: #ffffff; */
+}
+
+body {
+	background: linear-gradient(-90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.styled-table {
+    border-collapse: collapse;
+    border: 3px solid #000000;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: 'Josefin Sans', sans-serif;
+    
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid #000000;
+}
+
+.styled-table thead tr {
+    /* background-color: #009879;  */
+    background-color: #006898; 
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #e2e1e1;
+}
+
+
+.styled-table tbody th span {
+    color: transparent;
+}
+
+/* Checkbox */
+
+.container {
+    /* max-width: 640px; */
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-size: 13px; */
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 0px 10px;
+    margin-left: 50px;
+}
+ul.ks-cboxtags span{
+    list-style: none;
+    border: 3px solid #ffffff;
+    background-color: #bb2424;
+    border-radius: 10px;
+    padding: 8px 50px;
+    display: inline-block;
+    width: 250px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    
+}
+input{
+    margin-top: 30px;
+    margin-left: 30px;
+    text-align: center;
+    left: 50%;
+    width: 550px;
+    /* list-style: none; */
+    border: 3px solid #000000;
+    border-radius: 25px;
+    padding: 8px ;
+    background-color: rgba(255, 255, 255, .9);  
+    font-family: 'Josefin Sans';
+}
+
+input:focus {
+    border: 3px solid #ffffff;
+    border-color: #ffffff;
+    background-color: #000000;
+    color: #fff;
+    font-family: 'Josefin Sans'
+}
+input:required:valid {
+    border: 3px solid #ffffff;
+    border-color: #ffffff;
+    background-color: #009879;
+    color: #fff;
+    font-family: 'Josefin Sans';
+}
+input:not(:placeholder-shown) {
+    border: 3px solid #ffffff;
+    border-color: #ffffff;
+    background-color: #009879;
+    color: #fff;
+}
+
+
+/* Website + company size type */
+ul.ks-cboxtags li{
+    display: inline;
+    outline: none;
+    
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 3px solid #000000;
+    color: #000000;
+    border-radius: 25px;
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px ;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+    text-align: center;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;   
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 3px solid #ffffff;
+    background-color: #009879;
+    color: #fff;
+    transition: all .2s;
+    
+}
+
+ul.ks-cboxtags li input[id="checkboxLarge"] + label {
+    margin-left: 80px;
+    position: absolute;
+    top: 665px;
+    left: 375px;
+}
+
+ul.ks-cboxtags li input[id="checkboxIntermediate"] + label {
+    margin-left: 80px;
+    position: absolute;
+    top: 665px;
+    left: 680px;
+}
+
+ul.ks-cboxtags li input[id="checkboxMedium"] + label {
+    margin-left: 80px;
+    position: absolute;
+    top: 735px;
+    left: 375px;
+}
+
+ul.ks-cboxtags li input[id="checkboxSmall"] + label {
+    margin-left: 80px;
+    position: absolute;
+    top: 735px;
+    left: 680px;
+}
+
+ul.ks-cboxtags li input[id="checkboxStartup"] + label {
+    margin-left: 80px;
+    position: absolute;
+    top: 805px;
+    left: 375px;
+    
+}
+
+/* ul.ks-cboxtags li input[id="checkboxOne"] + label {
+    width: 200px;
+    text-align: center;
+} */
+
+ul.ks-cboxtags li input + label {
+    width: 240px;
+
+}
+
+ul.ks-cboxtags span[id="company"] {
+    position: absolute;
+    top: 670px;
+    height: 170px;
+    line-height: 170px;
+    text-align: center;
+  }
+
+ul.ks-cboxtags li input[type="checkbox"] {
+    display: absolute;
+    position: absolute;
+    opacity: 0;
+    padding: 10;
+}
+
+/* input[id="cookie"] {
+    position: absolute;
+    width:940px;
+    top: 860px;
+    left: 40px;
+    border: 3px solid #000000;
+    border-radius: 0px;
+    padding: 8px ;
+    background-color: rgba(228, 202, 147, 0.9); 
+} */
+
+/* Placeholder in Query, City, .., Prefered keywords */
+ul input::-webkit-input-placeholder {
+    color: #000000;
+    font-family: 'Josefin Sans', sans-serif;
+    opacity: 1;
+}
+
+ul input:focus::-webkit-input-placeholder {
+    color: #ffffff;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Button */
+.main-btn{
+    display: inline;
+    height: 100px;
+    width: 100px;
+    border-radius: 3px;
+    background: #e0e5ec;
+    display: flex;
+    justify-content: center;
+    content:"\f002";
+    color: rgb(255, 255, 255);
+}
+
+button[id="search"] {
+    background-color: rgb(221, 208, 24);
+    font-size: 30px;
+    border-radius: 8px;
+    border: solid;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+button[id="reset"] {
+    background-color: #964B00;
+    font-size: 30px;
+    border-radius: 8px;
+    border: solid;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+/* .fa:active{
+    box-shadow:  
+        4px 4px 6px 0 rgba(255,255,255,.5),
+        -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+        inset -4px -4px 6px 0 rgba(255,255,255,.5),
+        inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  } */
+
+.fa-search{
+    position: absolute;
+    top: 750px;
+    left: 1300px;
+}
+.fa-repeat{
+    position: absolute;
+    top: 750px;
+    left: 1500px;
+}
+.fa-trophy[id="4+"]{
+    color:turquoise;
+    border-color: #000000;
+}
+.fa-trophy[id="3"]{
+    color:gold;
+    border-color: #000000;
+}
+.fa-trophy[id="2"]{
+    color:silver;
+    border-color: #000000;
+}
+.fa-trophy[id="1"]{
+    color:brown;
+    border-color: #000000;
+}
+.fa-trophy[id="0"]{
+    color:black;
+    border-color: #000000;
+}
+
+.btn{
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+    justify-content: center;
+    color: rgb(228, 208, 34);
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+}
+.btn[id="id"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; */
+}
+/*.btn[id="job_rating"] {
+    margin-top: -20px;
+    position: absolute;
+    top: 950px;
+    left: 120px;
+}*/
+.btn[id="job_website"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 210px; */
+}
+
+.btn[id="job_company"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 500px; */
+}
+.btn[id="job_company_sector"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 500px; */
+}
+/* .btn[id="job_company_type"] {
+    position: absolute;
+    top: 950px;
+    left: 650px;
+} */
+.btn[id="job_country"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 1320px; */
+}
+.btn[id="job_city"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 1420px; */
+}
+.btn[id="job_date"] {
+    margin-top: 15px;
+    /* position: absolute;
+    top: 950px;
+    left: 1760px; */
+} 
+
+
+/* Image */
+img[id="logo"] {
+    position: absolute;
+    top: 100px;
+    left: 1095px;
+}
+
+/* Horizontal line */
+/* hr[id="horline"]{
+    padding-top: 200px;
+    opacity: 0;
+} */
+
+/* th[id=date]{
+    content:"\f161";
+
+} */

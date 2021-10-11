@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jobs recommendation by web scraping</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='phocacssflagswidth/css/phoca-flags.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='phocacssflagswidth/css/style.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    </head>
+
+
+    <body>
+        <div style="margin-top: 50px;" class="ui container">
+            <h1 class="main-title">Find your job/internship by web scraping</h1>
+
+            <form class="ui form" action="/add" method="post">
+
+                <div class="field">
+                    
+                    <ul class="ks-cboxtags">
+                        <span>Website</span>
+                        <li><input type="checkbox" id="checkboxOne" name="website" value="Indeed" checked><label for="checkboxOne">Indeed</label></li>
+                        <li><input type="checkbox" id="checkboxTwo" name="website" value="LinkedIn"><label for="checkboxTwo">LinkedIn</label></li><br>
+
+                        <span>Query*</span>
+                        <!-- <input type="text" name="query" placeholder="What are you looking for ?" required><br> -->
+                        <input type="text" name="query" placeholder="What are you looking for ?"><br>
+
+                        <span>City*</span>
+                        <!-- <input type="text" name="location" placeholder="Several words possible (separation with ';')" required><br> -->
+                        <input type="text" name="location" placeholder="Several possible words (separation with ';')"><br>
+                        
+                        <span>Distance from the city</span>
+                        <input type="text" name="distance" placeholder="in km"><br>
+
+                        <span>Required keywords (in title)</span>
+                        <input type="text" name="title_keywords_must" placeholder="Several possible words (separation with ';')"><br>
+
+                        <span>Excluded keywords (in title)</span>
+                        <input type="text" name="title_keywords_excluded" placeholder="Several possible words (separation with ';')"><br>
+                        
+                        <span>Preferred keywords (in title)</span>
+                        <input type="text" name="title_keywords_ordered" placeholder="Several possible words (separation with ';')"><br>
+
+                        <span>Number of pages</span>
+                        <input type="text" name="pages" placeholder="1-100"><br>
+
+                        <span id="company">Company size type</span>
+                        <li><input type="checkbox" id="checkboxLarge" name="company_size_type" value="Large" checked><label for="checkboxLarge">Large-sized Enterprise<br>(+5000 employees)</label></li>
+                        <li><input type="checkbox" id="checkboxIntermediate" name="company_size_type" value="Intermediate" checked><label for="checkboxIntermediate">Intermediate-sized Enterprise<br>(251-5000 employees)</label></li>
+                        <li><input type="checkbox" id="checkboxMedium" name="company_size_type" value="Medium" checked><label for="checkboxMedium">Medium-sized Enterprise<br>(51-250 employees)</label></li>
+                        <li><input type="checkbox" id="checkboxSmall" name="company_size_type" value="Small" checked><label for="checkboxSmall">Small-sized Enterprise<br>(11-50 employees)</label></li>
+                        <li><input type="checkbox" id="checkboxStartup" name="company_size_type" value="Startup" checked><label for="checkboxStartup">Startup<br>(1-10 employees)</label></li>
+                    </ul>
+
+                </div>
+                <!-- <input type="text" id="cookie" name="cookie" placeholder="Enter LI_AT cookie"> -->
+                <button class="fa main-btn fa-search" id="search" type="submit"> Search</button>
+
+            </form>
+
+            <form class="ui form" action="/delete" method="post">
+            <button class="fa main-btn fa-repeat" id="reset" type="submit"> Reset</button>
+            </form>
+
+            <img id="logo" src="{{url_for('static', filename='img/logo.svg')}}" width=700>
+
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <!-- <hr id="horline"> -->
+            
+            {% if jobs|length > 0 %}
+            
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <!-- {% for head in heads %}
+                            <th>{{ head }}</th>
+                        {% endfor %} -->
+                        
+                        <th><span id="id">ID</span><br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-numeric-asc" id="id" name="sort" value="id"></button>
+                            </form></th>
+                            
+                        <th>JOB RATING<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-numeric-asc" id="job_rating" name="sort" value="id"></button>
+                            </form></th>
+                            
+                        <th>WEBSITE<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_website" name="sort" value="job_website"></button>
+                            </form></th>
+                            
+                        <th>TITLE<br><br><br><br></th>
+                        <th>COMPANY<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_company" name="sort" value="job_company"></button>
+                            </form></th>
+                            
+                        <th>COMPANY TYPE<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_company_type" name="sort" value="job_company_type"></button>
+                            </form></th>
+                            
+                        <th>COMPANY SECTOR<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_company_sector" name="sort" value="job_company_sector"></button>
+                            </form></th>
+                        <th>COUNTRY<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_country" name="sort" value="job_country"></button>
+                            </form></th>
+                            
+                        <th>CITY<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-sort-alpha-asc" id="job_city" name="sort" value="job_city"></button>
+                            </form></th>
+                            
+                        <th>JOB SUMMARY<br><br><br><br></th>
+                        <th>DATE<br><br><form action="/sort" method="post">
+                            <button class="btn fa fa-calendar" id="job_date" name="sort" value="job_date"></button>
+                            </form></th>
+                           
+                        <th>JOB URL<br><br><br></th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <!-- {% for job in jobs|sort(attribute='job_city', reverse=True) %}
+                    {% endfor %} -->
+                    {% set ranking = jobs[0].job_ranking | string() %}                    
+                    {% for job in jobs|sort(attribute=ranking, reverse=False) %}
+                        <tr>
+                            <th>{{ job.id }}</th>
+                            <th>{% if job.job_rating >= 4 %}
+                                    {{ job.job_rating  }}<i class="fa fa-trophy" id="4+"></i><i class="fa fa-trophy" id="4+"></i><i class="fa fa-trophy" id="4+"></i><i class="fa fa-trophy" id="4+"></i>
+                                {% elif job.job_rating == 3 %}
+                                    {{ job.job_rating  }}<i class="fa fa-trophy" id="3"></i><i class="fa fa-trophy" id="3"></i><i class="fa fa-trophy" id="3"></i>
+                                {% elif job.job_rating == 2 %}
+                                    {{ job.job_rating }}<i class="fa fa-trophy" id="2"></i><i class="fa fa-trophy" id="2"></i>
+                                {% elif job.job_rating == 1 %}
+                                    {{ job.job_rating }}<i class="fa fa-trophy" id="1"></i>
+                                {% else %}
+                                    {{ job.job_rating }}<i class="fa fa-trophy" id="0"></i>
+                                {% endif %}</th>
+                            <th>{{ job.job_website }}</th>
+                            <th>{{ job.job_title }}</th>
+                            <th>{{ job.job_company }}</th>
+                            <th>{{ job.job_company_type }}</th>
+                            <th>{{ job.job_company_sector }}</th>
+                            <th>{{ job.job_country }}</br><span id=country class={{ job.job_country_code }}>FLAG</span></th>
+                            <th>{{ job.job_city }}</th>
+                            <th>{{ job.job_summary }}</th>
+                            <th>{{ job.job_date }}</th>
+                            <th><a href="{{ job.job_url }}">Link</a></th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+
+            </table>
+            {% endif %}
+            <br>
+            
+        </div>
+    </body>
+
+</html>
