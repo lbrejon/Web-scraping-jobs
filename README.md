@@ -18,14 +18,13 @@ Estimated reading time : ⏱️ 5min
 ## My goals 🎯
 - Find an internship for my final year as student (equivalent to Master degree) in Data Science in Europe (5-6 months from February 2022)
 - Learn how to gather information (by web scraping) to build a dataset 
-- Build and deploy a web app with Flask
+- Build a web app with Flask
 
 ## Acquired skills :zap:
 - Web scraping methods
-- HTTP methods ('GET' and 'POST') for the Flask implementation
+- HTTP methods ('GET' and 'POST') + HTML/CSS review for the Flask implementation
 - Concepts of Jinja templates
 - Handle with SQLAlchemy
-- Web app deployment on Heroku
 
 ## Technologies 🖥️
 Programming languages:
@@ -89,7 +88,7 @@ Librairies:
 ```
 
 ## Description 📋 
-This project aims to **find best job offers for you by web scrapping**. As a reminder, **web scraping is the process of gathering information from the Internet, most of the time automatically**. Just to make sure you understand the the scope of this process, scraping a page respectfully for educational purposes is not a problem since the information is publically available.
+This project aims to **find best job offers for you by web scrapping**. As a reminder, **web scraping is the process of gathering information from the Internet, most of the time automatically**. Just to make sure you understand the the scope of this process, scraping a page respectfully for educational purposes is not a problem since the information is publically available. User job request is sent (GET/POST) and saved as json file ```data/jobs_parameters_user_request.json```, then the ```notebooks/scraping_jobs.py``` taking in argument this json file, scrapes both websites (Indeed/LinkedIn). After data processing, user can either visualize results throught csv file ```data/jobs.csv``` or throught the wep app. The latter offer to the user to rank job offers by rating, alphabetical criteria.
 
 - I choosen to use **BeautifulSoup** librairy because it's an easy one for beginners (for other librairies, see Selenium, lxml, Scrapy..). BeautifulSoup is a Python library for parsing structured data (```soup = BeautifulSoup(page.content, "html.parser")```). It allows you to interact with HTML in a similar way to how you interact with a web page using developer tools. Indeed, an HTML web page is structured by **tags** making elements search simple: 
     - find elements by class name: ```element1 = soup.find_all("<tag>", class_="<class>")```
@@ -138,7 +137,7 @@ For example, assuming that a user make a request with ```Preferred keywords (in 
   </kbd>
 </p>
 
-- You can also rank jobs by others criteria such as **ID**, **Company**, **Company type**, **Company sector**, **Country**, **City** and **Date** by clicking in ranking button (jobs are ranked by alphabetical order [A-Z] and descending number [9-0].
+- You can also rank jobs by others criteria such as **ID**, **Company**, **Company type**, **Company sector**, **Country**, **City** and **Date** with ranking buttons (jobs are sorted by alphabetical order [A-Z] and descending number [9-0].
 
 ## Help 🔑
 It is possible that **LinkedIn blocked your access while scrapping the website**. You'll get the error mentioned below. Indeed you can only access a LinkedIn profile if you are logged in and when LinkedIn receives a request, it looks for a specific cookie called **li_at** in the request. If it does not find this cookie, it redirects the requester to a page with the JavaScript you had. This JavaScript serves to redirect you to the login page. That's what all the ```window.location.href=<thing>``` is about. You juste have to add the li_at cookie value: ```headers={'cookie': 'li_at=<cookie_li_at_value>'})```. By doing this, you "**fake**" a logged-in request by going to LinkedIn, copying your own li_at cookie, and adding that to your request. Note that this will only work temporarily: at some point LinkedIn will expect that cookie to change, and **you will have to re-copy it**.
@@ -219,5 +218,5 @@ $ flask run
 - Inspired by the work of *Python Engineer* with his YouTube video [Python Flask Beginner Tutorial - Todo App - Crash Course](https://www.youtube.com/watch?v=yKHJsLUENl0) for **Flask app implementation**. 
 - Help with **Flask installation** [here](https://flask.palletsprojects.com/en/2.0.x/installation/).
 - Help with **Jinja2 Templates and Forms** [here](https://www.codecademy.com/learn/learn-flask/modules/flask-templates-and-forms/cheatsheet).
-- Help with **Web App deployment on Heroku** [here](https://www.heroku.com/) and [here](https://devcenter.heroku.com/articles/heroku-cli).
+<!-- - Help with **Web App deployment on Heroku** [here](https://www.heroku.com/) and [here](https://devcenter.heroku.com/articles/heroku-cli). -->
 - Thanks to *RobertAKARobin* for his solution to **solve LinkedIn access blocking** on [Stack Overflow](https://stackoverflow.com/questions/53749379/download-a-linkedin-page).
