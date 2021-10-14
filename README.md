@@ -29,7 +29,7 @@ Estimated reading time : ⏱️ 5min
 ## Technologies 🖥️
 Programming languages:
 ```bash
-- Python (framework pytorch)
+- Python (framework PyTorch)
 ```
 
 Librairies:
